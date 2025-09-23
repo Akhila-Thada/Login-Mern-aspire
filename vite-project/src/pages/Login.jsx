@@ -57,14 +57,34 @@ const handleSublit = async (e) =>{
 
 
     return (
-        <div className='flex w-[100%]  min-h-screen justify-center items-center bg-gray-200'>
-            <form onSubmit={handleSublit} className='flex flex-col bg-blue-400 w-[30%] h-[200px] rounded-2xl p-10'>
-                <input onChange={handleChange} className='bg-white p-2 px-1 m-1 ' placeholder='UserName' type='text' name='userName'/>
-                <input onChange={handleChange} className='bg-white p-2 px-1 m-1' placeholder='Password' type='password' name='password'/>
+         <div className="flex w-full min-h-screen justify-center items-center bg-gray-200 px-4">
+      <form
+        onSubmit={handleSublit}
+        className="flex flex-col bg-blue-400 w-full max-w-md h-auto rounded-2xl p-6 sm:p-10"
+      >
+        <input
+          onChange={handleChange}
+          className="bg-white p-2 px-3 m-1 rounded-md"
+          placeholder="UserName"
+          type="text"
+          name="userName"
+        />
+        <input
+          onChange={handleChange}
+          className="bg-white p-2 px-3 m-1 rounded-md"
+          placeholder="Password"
+          type="password"
+          name="password"
+        />
 
-                <button className='bg-blue-800 rounded-2xl p-2 mt-2' type='submit'>Login</button>
-            </form>
-        </div>
+        <button
+          className="bg-blue-800 text-white rounded-2xl p-2 mt-2 hover:bg-blue-900 transition"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
     )
 }
 
