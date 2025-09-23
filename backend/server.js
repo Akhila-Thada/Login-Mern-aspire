@@ -16,14 +16,28 @@ dotenv.config();
 
 
 
+// const connectDB = async () => {
+//     mongoose.connection.on('connected', () => {
+//         console.log('database conneted');
+//     })
+
+//     await mongoose.connect(process.env.MONGODB_URI);
+
+// }
+
+
 const connectDB = async () => {
-    mongoose.connection.on('connected', () => {
-        console.log('database conneted');
-    })
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ Database connected");
+  } catch (err) {
+    console.error("❌ MongoDB connection error:", err.message);
+  }
+};
 
-    await mongoose.connect(process.env.MONGODB_URI);
-
-}
 
 connectDB();
 
