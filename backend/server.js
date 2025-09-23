@@ -46,62 +46,12 @@ app.use(cors({
 
 
 
-// app.post('/login', async (req, res) => {
-//     try {
-
-//         const { userName, password } = req.body;
-
-//         const exist = await User.findOne({userName});
-
-//         if (!exist) {
-//             return res.status(401).json({ success: false, message: "user Email not found" });
-
-//         }
-
-//         if (password !== exist.password) {
-//             return res.status(402).json({ success: false, message: "invalid password" });
-
-//         }
-
-//         return res.status(200).json(exist);
 
 
-//     } catch (error) {
-//                     return res.status(402).json({ success: false, message: "server error in login" });
-//     }
-// })
 
-
-// app.post("/login", async (req, res) => {
-//   try {
-//     const { userName, password } = req.body;
-
-//     const exist = await User.findOne({ userName });
-
-
-//     if (!exist) {
-//       return res.status(401).json({ success: false, message: "User not found" });
-//     }
-
-    
-   
-//         if (password !== exist.password) {
-//             return res.status(402).json({ success: false, message: "invalid password" });
-
-//         }
-    
-//     const safeUser = {  userName: exist.userName };
-//     return res.status(200).json({ success: true, user: safeUser });
-//   } catch (err) {
-//     console.error(err);
-//     return res.status(500).json({ success: false, message: "Server error" });
-//   }
-// });
-
-
-// app.get('/', (req, res) => {
-//     res.send('server is running')
-// })
+app.get('/', (req, res) => {
+    res.send('server is running')
+})
 
 app.post("/login", async (req, res) => {
   try {
