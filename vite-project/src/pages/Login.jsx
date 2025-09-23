@@ -4,6 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
+
+
 function Login ({user, setUser}) {
 const [data, setData] = useState({
     userName : '',
@@ -24,7 +30,7 @@ const handleSublit = async (e) =>{
     e.preventDefault();
    
   try {
-  const res = await axios.post('http://localhost:3000/login', data, {
+  const res = await axios.post('/login', data, {
     withCredentials: true
   });
   
