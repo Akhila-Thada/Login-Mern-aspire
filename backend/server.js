@@ -11,7 +11,7 @@ app.use(express.json());
 
 dotenv.config();
 
-const allowedOrign = ["http://localhost:5173"]
+const allowedOrign = ["http://localhost:5173", "https://login-mern-aspire-frontend.vercel.app"]
 
 
 
