@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+
+axios.defaults.withCredentials = true;
+//axios.defaults.baseURL = "http://localhost:5000";
+ axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
+
+
 function AddProduct ({user}) {
 
     const navigate = useNavigate();
@@ -23,7 +29,7 @@ const handleSubmit = async (e) => {
     e.preventDefault();
 
    try {
-     const res= await axios.post('http://localhost:5000/add-product',product, {
+     const res= await axios.post('/add-product',product, {
         headers: {
             Authorization: `Bearer ${user?.token}`
         },

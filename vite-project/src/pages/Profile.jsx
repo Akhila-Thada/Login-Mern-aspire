@@ -1,8 +1,10 @@
-
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+
+axios.defaults.withCredentials = true;
+//axios.defaults.baseURL = "http://localhost:5000";
+ axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 const Profile = ({ user }) => {
    const [showPopup, setShowPopup] = useState(false);
@@ -15,7 +17,7 @@ const Profile = ({ user }) => {
 
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/profile", {
+        const res = await axios.get("/profile", {
           headers: {
             Authorization: `Bearer ${user?.token}`, 
           },
