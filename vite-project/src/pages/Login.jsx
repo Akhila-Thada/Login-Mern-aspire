@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
+axios.defaults.baseURL = "http://localhost:5000";
+// axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
 
 
 function Login ({user, setUser}) {
@@ -26,7 +27,7 @@ const handleChange = (e) =>{
 
 
 
-const handleSublit = async (e) =>{
+const handleSubmit = async (e) =>{
     e.preventDefault();
    
   try {
@@ -35,13 +36,15 @@ const handleSublit = async (e) =>{
   });
   
   console.log(res);
-  setUser(res.data.exist);
+  setUser({ token: res.data.token });
   navigate('/profile')
 
 } catch (err) {
   if (err.response) {
+    alert(err.response.data.message)
     console.error('Login failed:', err.response.data.message);
   } else {
+    alert(err.message);
     console.error(err.message);
   }
 
@@ -51,15 +54,10 @@ const handleSublit = async (e) =>{
 }
 
 
-
-
-
-
-
     return (
-         <div className="flex w-full min-h-screen justify-center items-center bg-gray-200 px-4">
+         <div className="flex w-full min-h-screen justify-center items-center bg-gray-100 px-4">
       <form
-        onSubmit={handleSublit}
+        onSubmit={handleSubmit}
         className="flex flex-col bg-blue-400 w-full max-w-md h-auto rounded-2xl p-6 sm:p-10"
       >
         <input
@@ -78,7 +76,7 @@ const handleSublit = async (e) =>{
         />
 
         <button
-          className="bg-blue-800 text-white rounded-2xl p-2 mt-2 hover:bg-blue-900 transition"
+          className="bg-blue-800 text-white rounded-2xl p-2 cursor-pointer mt-2 hover:bg-blue-900 transition"
           type="submit"
         >
           Login
